@@ -17,6 +17,6 @@ class  Contact{
         std::string get_tel();
         std::string get_nickname();
         std::string get_secret();
-        std::string get_contact();
+        Contact get_contact();
         ~Contact();
 };

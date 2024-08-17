@@ -55,7 +55,7 @@ std::string Contact::get_secret()
     return this->secret;
 }
 
-std::string Contact::get_contact()
+Contact Contact::get_contact()
 {
-    return this->name + " " + this->surname + " " + this->tel + " " + this->nickname + " " + this->secret;
+    return *this; 
 }
