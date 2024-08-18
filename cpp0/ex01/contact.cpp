@@ -10,6 +10,11 @@ Contact::~Contact()
 
 }
 
+void Contact::set_name(std::string name)
+{
+    this->name = name;
+}
+
 void Contact::set_surname(std::string surname)
 {
     this->surname = surname;
@@ -53,9 +58,4 @@ std::string Contact::get_nickname()
 std::string Contact::get_secret()
 {
     return this->secret;
-}
-
-Contact Contact::get_contact()
-{
-    return *this; 
 }

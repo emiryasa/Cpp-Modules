@@ -1,5 +1,5 @@
+#pragma once
 #include "contact.hpp"
-
 class Phonebook{
     private:
         Contact contacts[8];
