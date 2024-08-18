@@ -1,6 +1,6 @@
 #include "Account.hpp"
 #include <iostream>
-#include <time.h>
+#include <iomanip>
 
 int Account::_nbAccounts = 0;
 int Account::_totalNbDeposits = 0;
@@ -90,7 +90,10 @@ int		Account::checkAmount(void) const
 
 void	Account::_displayTimestamp(void)
 {
-    std::cout << std::time(nullptr) << " ";
+    time_t now;
+
+    now = time(NULL);
+    std::cout << std::put_time(localtime(&now), "[%Y%m%d_%H%M%S]") << " ";
 }
 
 void	Account::displayStatus(void) const
@@ -107,6 +110,6 @@ void    Account::displayAccountsInfos(void)
     _displayTimestamp();
     std::cout << "accounts:" << getNbAccounts();
     std::cout << ";p_amount:" << getTotalAmount();
-    std::cout << ";deposit:" << getNbDeposits();
+    std::cout << ";deposits:" << getNbDeposits();
     std::cout << ";withdrawals:" << getNbWithdrawals() << std::endl;
 }
