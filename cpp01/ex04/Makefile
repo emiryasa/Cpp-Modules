@@ -1,5 +1,5 @@
-NAME=weapon
-SRC= main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+NAME=sed
+SRC= main.cpp Sed.cpp
 OBJ=$(SRC:.cpp=.o)
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic
 
