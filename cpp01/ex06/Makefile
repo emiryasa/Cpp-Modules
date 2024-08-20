@@ -1,5 +1,5 @@
 NAME=harlFilter
-SRC= main.cpp Sed.cpp
+SRC= main.cpp Harl.cpp
 OBJ=$(SRC:.cpp=.o)
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic
 

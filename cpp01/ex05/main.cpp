@@ -1,12 +1,19 @@
 #include "Harl.hpp"
 
-int main(int ac, char **av)
+int main()
 {
-    if (ac != 2)
-        return std::cout << "argument number must be two" << std::endl, 0;
-    
-    Harl harl;
-    harl.complain(av[1]);
+    Harl harl = Harl();
+    std::cout << "DEBUG : ";
+    harl.complain("debug");
+    std::cout << std::endl
+              << "INFO : ";
+    harl.complain("info");
+    std::cout << std::endl
+              << "WARNING : ";
+    harl.complain("warning");
+    std::cout << std::endl
+              << "ERROR : ";
+    harl.complain("error");
     
     return 0;
 }

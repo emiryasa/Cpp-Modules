@@ -26,5 +26,22 @@ Harl::~Harl() {}
 
 void Harl::complain(std::string level)
 {
-    
+	void	(Harl::*complaintFunctions[])(void) = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
+	};
+
+	std::string	complaintLevels[] = {"debug","info","warning","error"};
+
+	for (int cur = 0; cur < 4; cur++)
+	{
+		if (level == complaintLevels[cur])
+		{
+			(this->*complaintFunctions[cur])();
+			break;
+		}
+	}
+	return;
 }
