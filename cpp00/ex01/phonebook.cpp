@@ -1,15 +1,5 @@
 #include <iostream>
-#include "phonebook.hpp"
-
-Phonebook::~Phonebook()
-{
-    
-}
-
-Phonebook::Phonebook()
-{
-    
-}
+#include "Phonebook.hpp"
 
 void    Contact::print_with_details()
 {
@@ -36,24 +26,28 @@ std::string pass_space(std::string str)
     }
 }
 
-void Contact::print_user()
+void Contact::print_user(int i)
 {
-    static int i = 0;
-    if (i == 8)
-        i = 0;
     std::cout << "|" << pass_space(std::to_string(i));
     std::cout << "|" << pass_space(name);
     std::cout << "|" << pass_space(surname);
     std::cout << "|" << pass_space(nickname) << "|" << std::endl;
-    i++;
 }
 
 void Phonebook::search_contact()
 {
+    if (contacts[0].get_name().empty())
+    {
+        std::cout << "Phonebook is empty" << std::endl;
+        return;
+    }
     std::cout << "|     index|first name| last name|  nickname|" << std::endl;
     for (int j = 0; j < 8; ++j)
-        contacts[j].print_user();
-
+    {
+        if (contacts[j].get_name().empty())
+            break;
+        contacts[j].print_user(j);
+    }
     bool validIndex = false;
     int i;
     while (!validIndex)
@@ -64,7 +58,7 @@ void Phonebook::search_contact()
         if (std::cin.eof())
         {
             std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.ignore();
             std::cout << std::endl;
             return;
         }
@@ -72,41 +66,65 @@ void Phonebook::search_contact()
         {
             std::cout << "Invalid index. Please try again." << std::endl;
             std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.ignore();
         }
         else
             validIndex = true;
     }
 
     contacts[i].print_with_details();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.ignore();
 }
 
 void Phonebook::add_contact()
 {
     static int i = 0;
     if (i == 8)
-        i = 0;    
-    std::string name;
-    std::cout << "Enter a name: ";
-    std::getline(std::cin, name);
-    if (std::cin.eof())
-        std::exit(0);
-    this->contacts[i].set_name(name);
-    std::cout << "Enter a surname: ";
-    std::getline(std::cin, name);
-    this->contacts[i].set_surname(name);
-    std::string tel;
-    std::cout << "Enter a tel: ";
-    std::getline(std::cin, tel);
-    this->contacts[i].set_tel(tel);
-    std::string nickname;
-    std::cout << "Enter a nickname: ";
-    std::getline(std::cin, nickname);
-    this->contacts[i].set_nickname(nickname);
-    std::string secret;
-    std::cout << "Enter a secret: ";
-    std::getline(std::cin, secret);
-    this->contacts[i].set_secret(secret);
+        i = 0;
+    std::string data;
+    while (data.empty())    
+    {
+        std::cout << "Enter a name: ";
+        std::getline(std::cin, data);
+        this->contacts[i].set_name(data);
+        if (std::cin.eof())
+            std::exit(0);
+    }
+    data = "";
+    while (data.empty())
+    {
+        std::cout << "Enter a surname: ";
+        std::getline(std::cin, data);
+        this->contacts[i].set_surname(data);
+        if (std::cin.eof())
+            std::exit(0);
+    }
+    data = "";
+    while (data.empty())
+    {
+        std::cout << "Enter a tel: ";
+        std::getline(std::cin, data);
+        this->contacts[i].set_tel(data);
+        if (std::cin.eof())
+            std::exit(0);
+    }
+    data = "";
+    while (data.empty())
+    {
+        std::cout << "Enter a nickname: ";
+        std::getline(std::cin, data);
+        this->contacts[i].set_nickname(data);
+        if (std::cin.eof())
+            std::exit(0);
+    }
+    data = "";
+    while (data.empty())
+    {
+        std::cout << "Enter a secret: ";
+        std::getline(std::cin, data);
+        this->contacts[i].set_secret(data);
+        if (std::cin.eof())
+            std::exit(0);
+    }
     i++;
 }

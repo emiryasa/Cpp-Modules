@@ -1,14 +1,5 @@
 #include <iostream>
-#include "contact.hpp"
-
-Contact::Contact()
-{
-
-}
-Contact::~Contact()
-{
-
-}
+#include "Contact.hpp"
 
 void Contact::set_name(std::string name)
 {

@@ -7,7 +7,6 @@ class  Contact{
         std::string nickname;
         std::string secret;
     public:
-        Contact();
         void set_name(std::string name);
         void set_surname(std::string surname);
         void set_tel(std::string tel);
@@ -18,7 +17,6 @@ class  Contact{
         std::string get_tel();
         std::string get_nickname();
         std::string get_secret();
-        void print_user();
+        void print_user(int i);
         void print_with_details();
-        ~Contact();
 };

@@ -1,5 +1,5 @@
-NAME=phonebook
-SRC=Phonebook.cpp main.cpp Contact.cpp
+NAME=animal
+SRC= main.cpp Deneme.cpp #Dog.cpp Cat.cpp Deneme.cpp Animal.cpp #Brain.cpp
 OBJ=$(SRC:.cpp=.o)
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic
 
