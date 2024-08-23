@@ -30,13 +30,14 @@ int Sed::creat_file()
 
 int Sed::replace()
 {
-    char c;
+    if (this->filename.empty() || this->s1.empty() || this->s2.empty() )
+        return std::cerr << "You can not pass null to arguments" << std::endl, 1;
     std::fstream fs;
+    std::string buffer;
     fs.open(this->filename.c_str(), std::ios::in);
     if (fs.fail())
         return std::cerr << this->filename << " could not open" << std::endl, 1;
-    while (!fs.eof() && fs >> std::noskipws >> c)
-        this->line += c;
+    std::getline(fs, this->line, '\0');
     fs.close();
     return (this->creat_file());
 }

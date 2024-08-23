@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Phonebook.hpp"
 
 void    Contact::print_with_details()
@@ -58,7 +57,7 @@ void Phonebook::search_contact()
         if (std::cin.eof())
         {
             std::cin.clear();
-            std::cin.ignore();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
             std::cout << std::endl;
             return;
         }
@@ -66,7 +65,7 @@ void Phonebook::search_contact()
         {
             std::cout << "Invalid index. Please try again." << std::endl;
             std::cin.clear();
-            std::cin.ignore();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
         }
         else
         {
@@ -79,7 +78,7 @@ void Phonebook::search_contact()
         }
     }
     contacts[i].print_with_details();
-    std::cin.ignore();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 }
 
 void Phonebook::add_contact()

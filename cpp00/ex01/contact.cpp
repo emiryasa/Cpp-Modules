@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Contact.hpp"
 
 void Contact::set_name(std::string name)
