@@ -69,9 +69,15 @@ void Phonebook::search_contact()
             std::cin.ignore();
         }
         else
+        {
+            if (contacts[i].get_name().empty())
+            {
+                std::cout << "Contact " << i << " is empty" << std::endl;
+                continue;
+            }
             validIndex = true;
+        }
     }
-
     contacts[i].print_with_details();
     std::cin.ignore();
 }

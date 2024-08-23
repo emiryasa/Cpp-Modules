@@ -1,4 +1,5 @@
 #pragma once
+
 class  Contact{
     private:
         std::string name;
