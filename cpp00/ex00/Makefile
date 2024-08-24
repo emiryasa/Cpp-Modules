@@ -1,7 +1,7 @@
 NAME=megaphone
 SRC=megaphone.cpp
 OBJ=$(SRC:.cpp=.o)
-CPPFLAGS=-Wall -Wextra -Werror
+CPPFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic
 
 all: $(NAME)
 
