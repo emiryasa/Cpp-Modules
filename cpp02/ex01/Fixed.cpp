@@ -48,12 +48,12 @@ void	Fixed::setRawBits(int const raw)
     this->num = raw;
 }
 
-float	Fixed::toFloat(void) const
+float	Fixed::toFloat() const
 {
 	return (float)this->num / (float)(1 << this->frac);
 }
 
-int	Fixed::toInt(void) const
+int	Fixed::toInt() const
 {
 	return roundf(this->num / (1 << this->frac));
 }
