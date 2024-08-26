@@ -1,5 +1,5 @@
 NAME=fixed
-SRC= main.cpp Fixed.cpp bsp.cpp
+SRC= main.cpp Fixed.cpp bsp.cpp Point.cpp
 OBJ=$(SRC:.cpp=.o)
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic
 
