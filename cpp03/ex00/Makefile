@@ -1,5 +1,5 @@
-NAME=ScavTrap
-SRC= main.cpp ClapTrap.cpp ScavTrap.cpp
+NAME=ClapTrap
+SRC= main.cpp ClapTrap.cpp
 OBJ=$(SRC:.cpp=.o)
 CPPFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic
 
