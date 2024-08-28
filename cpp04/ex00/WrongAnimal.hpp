@@ -1,17 +1,17 @@
 #pragma once
 
 #include <iostream>
-
-class WrongAnimal {
+#include <string>
+class WrongAnimal
+{
     protected:
         std::string type;
 
     public:
         WrongAnimal();
-		WrongAnimal(const WrongAnimal &);
-		WrongAnimal& operator=(const WrongAnimal &);
-		~WrongAnimal();
-
-        std::string     getType() const;
-        void    makeSound() const;
+        WrongAnimal(const WrongAnimal &copy);
+        WrongAnimal &operator=(const WrongAnimal &src);
+        std::string getType() const;
+        void makeSound() const;
+        ~WrongAnimal();
 };

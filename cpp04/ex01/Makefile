@@ -1,17 +1,20 @@
-NAME=animal
-SRC= main.cpp Deneme.cpp #Dog.cpp Cat.cpp Deneme.cpp Animal.cpp #Brain.cpp
-OBJ=$(SRC:.cpp=.o)
-CPPFLAGS=-Wall -Wextra -Werror -std=c++98 -pedantic
+NAME = AAnimals
+
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	c++ $(CPPFLAGS) -o $(NAME) $(OBJ)
+$(NAME):$(OBJS)
+		$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
-clean:
-	rm -f $(OBJ)
+clean: 
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all

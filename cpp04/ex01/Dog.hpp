@@ -1,16 +1,20 @@
 #pragma once
 
+#include "iostream"
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog: public Animal {
+class Dog : public Animal
+{
     private:
-        Brain *dogBrain;
+        Brain *brain;
+
     public:
         Dog();
-		Dog(const Dog&);
-		Dog& operator=(const Dog&);
-		~Dog();
-
+        Dog(const Dog &copy);
+        Dog &operator=(const Dog &src);
         void makeSound() const;
+        void setBrainIdea(int index, const std::string &idea);
+        std::string getBrainIdea(int index) const;
+        ~Dog();
 };

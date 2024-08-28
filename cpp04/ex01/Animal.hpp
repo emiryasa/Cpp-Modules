@@ -1,16 +1,18 @@
 #pragma once
-#include <iostream>
 
-class Animal {
+#include <iostream>
+#include <string>
+
+class Animal
+{
     protected:
         std::string type;
 
     public:
         Animal();
-		Animal(const Animal &);
-		Animal& operator=(const Animal &);
-		virtual ~Animal();
-
-        std::string     getType() const;
-        virtual void    makeSound() const;
+        Animal(const Animal &copy);
+        Animal &operator=(const Animal &src);
+        std::string getType() const;
+        virtual void makeSound() const;
+        virtual ~Animal();
 };

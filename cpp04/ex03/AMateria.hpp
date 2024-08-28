@@ -3,15 +3,17 @@
 #include <string>
 #include "ICharacter.hpp"
 
+class ICharacter;
+
 class AMateria
 {
     protected:
-
+        std::string type;
     public:
         AMateria();
-        AMateria(const AMateria &src);
+        AMateria(const AMateria &copy);
         AMateria &operator=(const AMateria &src);
-        ~AMateria();
+        virtual ~AMateria();
         AMateria(std::string const &type);
         std::string const &getType() const;
         virtual AMateria *clone() const = 0;
