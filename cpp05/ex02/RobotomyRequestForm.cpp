@@ -23,7 +23,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
     isExecutable(executor);
     std::cout << "*drilling noises*" << std::endl;
-    if (std::rand() % 2)  // fonksiyona bakılacak
+    if (std::rand() % 2)
         std::cout << _target << " has been robotomized!" << std::endl;
     else
         std::cout << _target << " robotomization failed" << std::endl;
