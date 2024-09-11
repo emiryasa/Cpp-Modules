@@ -115,7 +115,7 @@ int ScalarConverter::handlePseudo()
 
 void ScalarConverter::printChar(char c)
 {
-    long num = atol(_str.c_str());
+    long num = std::atol(_str.c_str());
     if (num < std::numeric_limits<char>::min() || num > std::numeric_limits<char>::max())
     {
         std::cout << "char: " << "impossible" << std::endl;
@@ -177,7 +177,7 @@ void ScalarConverter::printDouble(double num)
 
 void ScalarConverter::castInt()
 {
-    long num = atol(_str.c_str());
+    long num = std::atol(_str.c_str());
     printChar(static_cast<char>(num));
     printInt(num);
     printFloat(num);
@@ -195,7 +195,7 @@ void ScalarConverter::castChar()
 
 void ScalarConverter::castFloat()
 {
-    float num = atof(_str.c_str());
+    float num = std::atof(_str.c_str());
     printChar(static_cast<char>(num));
     printInt(static_cast<long>(num));
     printFloat(num);
@@ -204,7 +204,7 @@ void ScalarConverter::castFloat()
 
 void ScalarConverter::castDouble()
 {
-    double num = atof(_str.c_str());
+    double num = std::atof(_str.c_str());
     printChar(static_cast<char>(num));
     printInt(static_cast<long>(num));
     printFloat(static_cast<float>(num));
