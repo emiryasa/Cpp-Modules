@@ -18,4 +18,15 @@ class Span {
         void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
         int shortestSpan();
         int longestSpan();
+
+        class VectorIsFullException: public std::exception {
+            public:
+                virtual const char *what() const throw();
+        };
+        class NoSpanException: public std::exception {
+            public:
+                virtual const char *what() const throw();
+        };
 };
+
+#include "MutantStack.tpp"
