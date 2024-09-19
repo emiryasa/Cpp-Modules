@@ -28,5 +28,3 @@ class Span {
                 virtual const char *what() const throw();
         };
 };
-
-#include "MutantStack.tpp"
