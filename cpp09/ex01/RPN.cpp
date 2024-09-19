@@ -1,5 +1,5 @@
 #include "RPN.hpp"
-
+#include <sstream>
 RPN::RPN() {}
 
 RPN::RPN(const std::string &line): _line(line) {}
@@ -23,5 +23,5 @@ RPN::~RPN() {}
 
 int RPN::calculate()
 {
-
-}
+    std::stringstream fs(_line);
+}    
