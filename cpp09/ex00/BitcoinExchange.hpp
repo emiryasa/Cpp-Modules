@@ -8,8 +8,16 @@
 
 class BitcoinExchange {
     private:
-        std::string _file;
-        
+        const std::string _file;
+        std::map<std::string, double> _data;
+
+        std::string trimLine(const std::string& line) const; 
+        void    processLine(const std::string& line) const;
+        bool    isValidDate(const std::string& line) const;
+        bool    isValidValue(const std::string& line) const;
+        double    getPrice(const std::string& date) const;
+        void    setData();
+
     public:
         BitcoinExchange();
         BitcoinExchange(const std::string &file);
@@ -17,4 +25,10 @@ class BitcoinExchange {
         BitcoinExchange &operator=(const BitcoinExchange& src);
         ~BitcoinExchange();
 
+        void getBitcoinExchange();
+
+        class CouldNotOpenFileException: public std::exception {
+            public:
+                virtual const char *what() const throw();
+        };
 };
