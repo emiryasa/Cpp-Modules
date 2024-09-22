@@ -22,18 +22,16 @@ BitcoinExchange::~BitcoinExchange() {}
 void    BitcoinExchange::processLine(const std::string& line) const
 {
     std::stringstream ss(line);
-    std::string date, num;
+    std::string date;
+    double value;
 
-    if (std::getline(ss, date, '|') && std::getline(ss, num))
+    if (std::getline(ss, date, '|') && ss >> value)
     {
         date = trimLine(date);
-        num = trimLine(num);
-
-        if (isValidDate(date) && isValidValue(num))
+        if (isValidDate(date) && isValidValue(value))
         {
-            double value = std::atof(num.c_str());
             double price = getPrice(date);
-            std::cout << date << " => " << num << " = " << value * price << std::endl;
+            std::cout << date << " => " << value << " = " << value * price << std::endl;
         }
     }
     else
@@ -46,7 +44,7 @@ bool    BitcoinExchange::isValidDate(const std::string& date) const
     int year, month, day;
     char sep1, sep2;
 
-    if (!(ss >> year >> sep1 >> month >> sep2 >> day) || sep1 != '-' || sep2 != '-') {
+    if (!(ss >> year >> sep1 >> month >> sep2 >> day) || sep1 != '-' || sep2 != '-' || date.size() != 10) {
         std::cout << "Error: bad input => " << date << std::endl;
         return false;
     }
@@ -59,17 +57,14 @@ bool    BitcoinExchange::isValidDate(const std::string& date) const
     return true;
 }
 
-bool    BitcoinExchange::isValidValue(const std::string& value) const
+bool    BitcoinExchange::isValidValue(double value) const
 {
-    if (value.empty())
-        return false;
-    double num = std::atof(value.c_str());
-    if (num < 0)
+    if (value < 0)
     {
         std::cerr << "Error: not a positive number." << std::endl;
         return false;
     }
-    if (num > 1000)
+    if (value > 1000)
     {
         std::cerr << "Error: too large a number." << std::endl;
         return false;
@@ -85,10 +80,10 @@ void    BitcoinExchange::setData()
     if (!fs.is_open())
         throw CouldNotOpenFileException();
     std::string line;
+    std::string date;
+    double price;
     while (std::getline(fs, line)) {
         std::stringstream ss(line);
-        std::string date;
-        double price;
         if (std::getline(ss, date, ',') && ss >> price) {
             _data[date] = price;
         }

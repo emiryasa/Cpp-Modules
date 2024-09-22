@@ -14,7 +14,7 @@ class BitcoinExchange {
         std::string trimLine(const std::string& line) const; 
         void    processLine(const std::string& line) const;
         bool    isValidDate(const std::string& line) const;
-        bool    isValidValue(const std::string& line) const;
+        bool    isValidValue(double value) const;
         double    getPrice(const std::string& date) const;
         void    setData();
 

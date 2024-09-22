@@ -9,8 +9,7 @@ int main(int ac, char **av)
 
     try {
         RPN calculator(av[1]);
-        int result = calculator.calculate();
-        std::cout << result << std::endl;
+        calculator.calculate();
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
         return 1;

@@ -8,7 +8,9 @@ class RPN {
     private:
         const std::string _line;
         std::stack<double> _num;
-        std::stack<char> _op;
+
+        bool isOperator(char c);
+        bool performOperation(char op);
 
     public:
         RPN();
