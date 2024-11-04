@@ -114,28 +114,42 @@ void PmergeMe::fordJhanson(T &container)
     merge(container, left, right);
 }
 
+template <typename T>
+void PmergeMe::printContainer(T& container)
+{
+    for (typename T::iterator it = container.begin(); it != container.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
+
 void PmergeMe::getOutput(int ac, char **av)
 {
     struct timeval start, end;
     try {
         parseArgs(ac, av);
+        std::cout << "Before: ";
+        printContainer(_vec);
         gettimeofday(&start, NULL);
         fordJhanson(_vec);
         gettimeofday(&end, NULL);
+        std::cout << "After:  ";
         printContainer(_vec);
         long vec_seconds = end.tv_sec - start.tv_sec;
         long vec_microseconds = end.tv_usec - start.tv_usec;
         double vec_elapsed = vec_seconds * 1e6 + vec_microseconds;
-        std::cout << std::fixed << std::setprecision(5) << vec_elapsed << " us" << std::endl;
+        std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " <<
+        std::fixed << std::setprecision(5) << vec_elapsed << " us" << std::endl;
 
         gettimeofday(&start, NULL);
         fordJhanson(_deque);
         gettimeofday(&end, NULL);
-        printContainer(_deque);
         long list_seconds = end.tv_sec - start.tv_sec;
         long list_microseconds = end.tv_usec - start.tv_usec;
         double list_elapsed = list_seconds * 1e6 + list_microseconds;
-        std::cout << std::fixed << std::setprecision(5) << list_elapsed << " us" << std::endl;
+        std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque  : "
+        << std::fixed << std::setprecision(5) << list_elapsed << " us" << std::endl;
 
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;

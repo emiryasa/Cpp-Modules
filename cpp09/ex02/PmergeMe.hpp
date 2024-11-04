@@ -28,5 +28,5 @@ class PmergeMe {
         void merge(T &container, const T &left, const T &right);
 
         template <typename T>
-        void printContainer(T &container);
+        void printContainer(T& container);
 };
