@@ -54,6 +54,11 @@ bool    BitcoinExchange::isValidDate(const std::string& date) const
         return false;
     }
 
+    if (date > _data.rbegin()->first || date < _data.begin()->first) {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
+
     return true;
 }
 

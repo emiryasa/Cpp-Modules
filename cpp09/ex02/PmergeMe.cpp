@@ -24,11 +24,6 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 
 PmergeMe::~PmergeMe() {}
 
-void PmergeMe::sort()
-{
-    
-}
-
 std::vector<std::string> PmergeMe::split(std::string str)
 {
     std::vector<std::string> res;
@@ -71,6 +66,9 @@ void PmergeMe::parseArgs(int ac, char **av)
                 throw std::invalid_argument("Error");
             }
         }
+    }
+    if (_vec.size() == 1) {
+        throw std::invalid_argument("Error");
     }
 }
 

@@ -15,11 +15,10 @@ class PmergeMe {
         PmergeMe(const PmergeMe &src);
         PmergeMe &operator=(const PmergeMe &src);
         ~PmergeMe();
-        void getOutput(int ac, char **av);
-        void parseArgs(int ac, char **av);
         std::vector<std::string> split(std::string token);
+        void parseArgs(int ac, char **av);
+        void getOutput(int ac, char **av);
         bool isValidNumber(std::string token);
-        void sort();
 
         template <typename T>
         void fordJhanson(T &container);
