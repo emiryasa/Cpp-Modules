@@ -16,13 +16,29 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 {
     if (this != &src)
     {
-        _vec = src._vec;
-        _deque = src._deque;
+        _vec = src.getVec();
+        _deque = src.getDeque();
     }
     return *this;
 }
 
 PmergeMe::~PmergeMe() {}
+
+std::vector<int> PmergeMe::getVec() const {
+    return _vec;
+}
+
+std::deque<int> PmergeMe::getDeque() const {
+    return _deque;
+}
+
+void PmergeMe::setVec(std::vector<int> vec) {
+    _vec = vec;
+}
+
+void PmergeMe::setDeque(std::deque<int> deque) {
+    _deque = deque;
+}
 
 std::vector<std::string> PmergeMe::split(std::string str)
 {

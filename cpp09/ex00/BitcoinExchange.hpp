@@ -18,6 +18,11 @@ class BitcoinExchange {
         double    getPrice(const std::string& date) const;
         void    setData();
 
+        class CouldNotOpenFileException: public std::exception {
+            public:
+                virtual const char *what() const throw();
+        };
+
     public:
         BitcoinExchange();
         BitcoinExchange(const std::string &file);
@@ -27,8 +32,4 @@ class BitcoinExchange {
 
         void getBitcoinExchange();
 
-        class CouldNotOpenFileException: public std::exception {
-            public:
-                virtual const char *what() const throw();
-        };
 };
